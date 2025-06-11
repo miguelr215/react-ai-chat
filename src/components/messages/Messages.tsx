@@ -9,7 +9,7 @@ interface Message {
 
 const Messages: React.FC<{ messages: Message[] }> = ({ messages }) => {
 	return (
-		<section className="py-5">
+		<section className="message-wrapper pt-5">
 			{messages.map((message) => {
 				return (
 					<div
