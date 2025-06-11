@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { GoogleGenAI } from '@google/genai';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import './App.css';
 
 interface Message {
@@ -9,7 +11,7 @@ interface Message {
 }
 
 function App() {
-	// const googleGenApiKey = import.meta.env.VITE_GOOGLE_GEN_API_KEY;
+	// const googleGenApiKey: string = import.meta.env.VITE_GOOGLE_GEN_API_KEY;
 	const [messages, setMessages] = useState<Message[]>([]);
 	const [newMessage, setNewMessage] = useState<string>('');
 
@@ -28,6 +30,11 @@ function App() {
 			return res.text;
 		} catch (error) {
 			console.log('error getting AI message:', error);
+			let errorMessage = 'Unknown error';
+			if (error && typeof error === 'object' && 'message' in error) {
+				errorMessage = (error as { message: string }).message;
+			}
+			return `Error getting AI response: ${errorMessage}`;
 		}
 	}
 
@@ -62,25 +69,8 @@ function App() {
 	return (
 		<>
 			<main>
-				<section className="header">
-					<h1>Gemini Chat by Miguel</h1>
-					<ul>
-						<li>
-							<a
-								href="https://ai.google.dev/gemini-api/docs"
-								target="_blank"
-							>
-								Gemini API Docs
-							</a>
-						</li>
-						<li>
-							Created by{' '}
-							<a href="https://mrtech.dev" target="_blank">
-								Miguel Ramos
-							</a>
-						</li>
-					</ul>
-				</section>
+				<Header />
+
 				<section>
 					{messages.map((message) => {
 						return (
@@ -102,17 +92,11 @@ function App() {
 				</section>
 			</main>
 
-			<footer>
-				<form onSubmit={sendMessage}>
-					<input
-						value={newMessage}
-						onChange={(e) => setNewMessage(e.target.value)}
-						type="text"
-						placeholder="Enter your message..."
-					/>
-					<button type="submit">Send</button>
-				</form>
-			</footer>
+			<Footer
+				sendMessage={sendMessage}
+				newMessage={newMessage}
+				setNewMessage={setNewMessage}
+			/>
 		</>
 	);
 }
