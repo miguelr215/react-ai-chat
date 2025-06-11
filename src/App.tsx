@@ -63,15 +63,23 @@ function App() {
 		<>
 			<main>
 				<section className="header">
-					<h1>Gemini Chat</h1>
-					<div>
-						<a
-							href="https://ai.google.dev/gemini-api/docs"
-							target="_blank"
-						>
-							Gemini API Docs
-						</a>
-					</div>
+					<h1>Gemini Chat by Miguel</h1>
+					<ul>
+						<li>
+							<a
+								href="https://ai.google.dev/gemini-api/docs"
+								target="_blank"
+							>
+								Gemini API Docs
+							</a>
+						</li>
+						<li>
+							Created by{' '}
+							<a href="https://mrtech.dev" target="_blank">
+								Miguel Ramos
+							</a>
+						</li>
+					</ul>
 				</section>
 				<section>
 					{messages.map((message) => {
