@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { GoogleGenAI } from '@google/genai';
 import Header from './components/Header';
+import Messages from './components/Messages';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -71,25 +72,7 @@ function App() {
 			<main>
 				<Header />
 
-				<section>
-					{messages.map((message) => {
-						return (
-							<div
-								key={message.timestamp}
-								className={`message ${message.role}`}
-							>
-								<time>{message.timestamp}</time>
-								<div>
-									{message.content
-										.split('\n')
-										.map((line, idx) => (
-											<p key={idx}>{line}</p>
-										))}
-								</div>
-							</div>
-						);
-					})}
-				</section>
+				<Messages messages={messages} />
 			</main>
 
 			<Footer
