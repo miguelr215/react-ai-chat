@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { GoogleGenAI } from '@google/genai';
-import Header from './components/Header';
-import Messages from './components/Messages';
-import Footer from './components/Footer';
+import Header from './components/header/Header';
+import Messages from './components/messages/Messages';
+import Footer from './components/footer/Footer';
 import './App.css';
 
 interface Message {
@@ -69,7 +69,7 @@ function App() {
 
 	return (
 		<>
-			<main>
+			<main className="p-4 w-full md:w-4/5 md:mx-auto">
 				<Header />
 
 				<Messages messages={messages} />

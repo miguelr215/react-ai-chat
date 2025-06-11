@@ -1,0 +1,10 @@
+footer {
+	min-height: 20vh;
+	background: #242424;
+}
+@media (min-width: 768px) {
+	footer {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
