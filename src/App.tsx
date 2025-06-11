@@ -12,12 +12,12 @@ interface Message {
 }
 
 function App() {
-	// const googleGenApiKey: string = import.meta.env.VITE_GOOGLE_GEN_API_KEY;
+	const googleGenApiKey: string = import.meta.env.VITE_GOOGLE_GEN_API_KEY;
 	const [messages, setMessages] = useState<Message[]>([]);
 	const [newMessage, setNewMessage] = useState<string>('');
 
 	const ai = new GoogleGenAI({
-		apiKey: 'AIzaSyDZP4OccsJ9rijlW7S4PlnVo87Y_5ozmOQ',
+		apiKey: googleGenApiKey,
 	});
 
 	async function getAIMessage(message: string) {
